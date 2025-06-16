@@ -16,6 +16,7 @@ const skills = [
   "Kubernetes",
   "Git & Github",
   "Data Structure and Algorithm",
+  "System Design"
 ];
 
 export default function Stacks() {
