@@ -1,155 +1,84 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useTheme } from "../context/ThemeContext";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { MdOutlineLightMode } from "react-icons/md";
-import { usePathname } from "next/navigation";
-import { HiMenu, HiX } from "react-icons/hi";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+
+const navItems: { label: string; href: string }[] = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(
-    null
-  );
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
-  // Scroll logic
+  // Fix hydration mismatch for theme icons
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Hide on scroll down
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-
-      setLastScrollY(currentScrollY);
-
-      // Show when scrolling stops
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      const timeout = setTimeout(() => setShowNavbar(true), 200);
-      setScrollTimeout(timeout);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
-  }, [lastScrollY, scrollTimeout]);
+    setMounted(true);
+  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        showNavbar ? "translate-y-0" : "-translate-y-full"
-      } ${
-        theme === "dark"
-          ? pathname === "/" ? "bg-[#1a1a1a]/80 backdrop-blur-sm" : "bg-[#1a1a1a]"
-          : pathname === "/" ? "bg-white/80 backdrop-blur-sm" : "bg-white"
-      }`}
-    >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
-        <div className="flex justify-between items-center">
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleTheme}
-            className={`p-2 rounded-xl transition-all duration-200 ${
-              theme === "dark"
-                ? "bg-[#2a2a2a] hover:bg-[#3a3a3a]"
-                : "bg-[#f5f5f5] hover:bg-[#eaeaea]"
+    <nav className="inset-x-0 my-6 z-50 flex justify-between items-center">
+      {/* Left: Logo + Links */}
+      <div
+        className={`flex items-center gap-8 px-6 py-5 rounded-2xl shadow-md border transition-colors duration-300 ${
+          theme === "dark"
+            ? "bg-zinc-700 border-neutral-800"
+            : "bg-white border-neutral-300"
+        }`}
+      >
+        {/* Logo */}
+        <div className="flex items-center">
+          <Image
+            src="/profile.jpg"
+            alt="Sagar Bisht profile"
+            className="rounded-full"
+            width={30}
+            height={30}
+          />
+          <Link
+            href="/"
+            className={`font-bold text-sm px-3 py-1 rounded-full ${
+              theme === "dark" ? "text-white" : "text-black"
             }`}
           >
-            {theme === "dark" ? (
-              <MdOutlineDarkMode size={20} />
-            ) : (
-              <MdOutlineLightMode size={20} />
-            )}
-          </button>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-xl transition-all duration-200"
-          >
-            {isMenuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
-          </button>
-
-          {/* Navigation Links - Desktop */}
-          <div
-            className={`hidden md:flex gap-8 border-1 border-zinc-500 rounded-full shadow-2xs px-4 py-2 ${
-              theme === "dark" ? "text-white" : "text-[#1a1a1a]"
-            }`}
-          >
-            <a
-              href="#experience"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-            >
-              Experience
-            </a>
-            <a
-              href="#projects"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-            >
-              Projects
-            </a>
-            <a
-              href="#stacks"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-            >
-              Stacks
-            </a>
-            <a
-              href="#contact"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-            >
-              Contact
-            </a>
-          </div>
+            Sagar Bisht
+          </Link>
         </div>
 
-        {/* Mobile Navigation Links */}
-        <div
-          className={`md:hidden transition-all duration-300 ${
-            isMenuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-          } overflow-hidden`}
-        >
-          <div className="flex flex-col gap-4 py-4">
+        {/* Navigation Links */}
+        <div className="hidden md:flex gap-7">
+          {navItems.map((item) => (
             <a
-              href="#experience"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium hover:text-blue-500 transition-colors"
             >
-              Experience
+              {item.label}
             </a>
-            <a
-              href="#projects"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="#stacks"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Stacks
-            </a>
-            <a
-              href="#contact"
-              className="text-sm font-medium hover:text-blue-400 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </a>
-          </div>
+          ))}
         </div>
       </div>
+
+      {/* Right: Theme toggle */}
+      {mounted && (
+        <button
+          onClick={toggleTheme}
+          className="rounded-full p-3 border transition hover:bg-zinc-200 dark:hover:bg-zinc-700"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <MdOutlineLightMode size={18} />
+          ) : (
+            <MdOutlineDarkMode size={18} />
+          )}
+        </button>
+      )}
     </nav>
   );
 }
