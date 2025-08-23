@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 100 100">
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="45" fill="#2563eb" />
+
+  <!-- Inner Abstract Shape -->
+  <path d="M30 50a20 20 0 0 1 40 0c0 10-10 20-20 20s-20-10-20-20z" fill="#fff"/>
+
+  <!-- Spark Effect -->
+  <circle cx="70" cy="30" r="6" fill="#facc15"/>
+  <circle cx="75" cy="25" r="2" fill="#fde047"/>
+</svg>

@@ -69,7 +69,7 @@ export default function Navbar() {
       {mounted && (
         <button
           onClick={toggleTheme}
-          className="rounded-full p-3 border transition hover:bg-zinc-200 dark:hover:bg-zinc-700"
+          className="rounded-full p-3 border transition"
           aria-label="Toggle theme"
         >
           {theme === "dark" ? (

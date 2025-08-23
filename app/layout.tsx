@@ -13,9 +13,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Sagar Bisht",
   description: "Personal portfolio showcasing my work and skills",
-  icons : {
-     icon: "/profile.jpg"
-  }
+  icons: {
+    icon: "/weather.svg",
+  },
 };
 
 export default function RootLayout({

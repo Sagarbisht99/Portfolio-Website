@@ -10,27 +10,9 @@ export function CardHoverEffectDemo() {
 
 export const projects = [
   {
-    title: "Drive Clone",
-    description:
-      "Google Drive clone to upload, organize, and manage files securely.",
-    tags: ["Next.js", "ImageKit", "React", "TailwindCSS"],
-    icon: "/next.svg",
-    link: "https://drive-tutorial-lyart.vercel.app/",
-    code: "https://github.com/Sagarbisht99/drive-tutorial",
-    image: "/dummy-logo-1.svg",
-  },
-  {
-    title: "SAAS AI Supernova",
-    description: "AI-powered SaaS platform integrating smart ML features.",
-    tags: ["Next.js", "OpenAI", "TypeScript", "TailwindCSS"],
-    icon: "/next.svg",
-    link: "https://saas-ai-msxz.vercel.app/",
-    code: "https://github.com/Sagarbisht99/Saas-AI",
-    image: "/dummy-logo-2.svg",
-  },
-  {
     title: "Password Manager",
-    description: "Secure and customizable password generator tool.",
+    description:
+      "Secure and customizable password manager with encryption and local storage support.",
     tags: ["React", "TailwindCSS", "LocalStorage", "JavaScript"],
     icon: "/next.svg",
     link: "https://password-manager-eight-inky.vercel.app/",
@@ -38,34 +20,33 @@ export const projects = [
     image: "/dummy-logo-3.svg",
   },
   {
+    title: "Mausam Dashboard",
+    description:
+      "A modern weather app providing real-time forecasts, temperature, and city-based search with a clean UI.",
+    tags: ["Next.js", "OpenAI", "TypeScript", "TailwindCSS"],
+    icon: "/weather.svg",
+    link: "https://weather-app-next-js-ashen.vercel.app/",
+    code: "https://github.com/Sagarbisht99/weather-app-next-js",
+    image: "/weather.svg",
+  },
+  {
+    title: "Fizzi Drink (Product Showcase)",
+    description:
+      "Interactive product showcase website for a fizzy drink brand with animations and smooth UI.",
+    tags: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
+    icon: "/next.svg",
+    link: "https://fizzi-animinated-project.vercel.app/", // change if you deploy
+    code: "https://github.com/Sagarbisht99/fizzi-animinated-project", // change if repo ready
+    image: "/product.svg",
+  },
+  {
     title: "Crypto Tracker",
-    description: "Live cryptocurrency tracker with real-time data and charts.",
+    description:
+      "Live cryptocurrency tracker displaying real-time market prices, charts, and percentage changes.",
     tags: ["React", "Chart.js", "API", "TailwindCSS"],
     icon: "/next.svg",
     link: "https://crypto-currency-green-mu.vercel.app/",
-    code: "https://github.com/Sagarbisht99/Crypto-currency-",
+    code: "https://github.com/Sagarbisht99/Crypto-currency-/tree/main/Crypto%20Currency",
     image: "/dummy-logo-4.svg",
-  },
-
-  {
-    title: "Outfit.in (E-Commerce)",
-    description:
-      "Full-stack e-commerce app with cart, checkout, and admin panel.",
-    tags: ["Next.js", "MongoDB", "TailwindCSS", "Stripe"],
-    icon: "/next.svg",
-    link: "https://outfit-in.vercel.app/",
-    code: "https://github.com/Sagarbisht99/outfit.in-",
-    image: "/dummy-logo-6.svg",
-  },
-
-  {
-    title: "Khata Book",
-    description:
-      "Digital ledger app for managing personal and business accounts.",
-    tags: ["Next.js", "MongoDB", "TailwindCSS", "Context API"],
-    icon: "/next.svg",
-    link: "https://khata-book.vercel.app/",
-    code: "https://github.com/Sagarbisht99/khata-book",
-    image: "/dummy-logo-8.svg",
   },
 ];
